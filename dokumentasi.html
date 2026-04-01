@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Panduan - BejajaCafePOS Premium Cafe System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; }
+        .prose h2 { color: #D97706; border-bottom: 2px solid #D9770620; padding-bottom: 0.5rem; margin-top: 2rem; }
+        .prose h3 { color: #1e293b; margin-top: 1.5rem; }
+        .code-block { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; font-family: monospace; overflow-x: auto; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 pb-20">
+
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-black text-slate-900 mb-2">Buku Panduan <span class="text-[#D97706]">BejajaCafePOS</span></h1>
+            <p class="text-slate-500">Sistem Kasir Kafe Premium Offline-First PWA</p>
+        </header>
+
+        <main class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 prose prose-slate max-w-none">
+            
+            <h2>1. Panduan Penggunaan Aplikasi</h2>
+
+            <h3>A. Login & Hak Akses</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Saat pertama kali dibuka, sistem dilindungi oleh PIN 6 angka.</li>
+                <li><strong>Admin Default:</strong> PIN <code>123456</code> (Memiliki akses penuh ke Laporan Keuangan, Pengaturan, dan Manajemen User).</li>
+                <li><strong>Kasir Default:</strong> PIN <code>111111</code> (Hanya bisa mengakses Kasir, Menu, dan Riwayat Transaksi).</li>
+            </ul>
+            
+            <h3>B. Melakukan Transaksi (Kasir / POS)</h3>
+            <ol class="list-decimal pl-5 space-y-2">
+                <li>Buka menu <strong>Kasir</strong>.</li>
+                <li>Pilih kategori atau cari nama menu di kolom pencarian, lalu klik gambar/nama menu yang dipesan.</li>
+                <li>Di area keranjang (sisi kanan pada PC, atau klik tombol tas belanja pada HP), sesuaikan jumlah pesanan dengan tombol <code>+</code> atau <code>-</code>.</li>
+                <li>Klik tombol <strong>Lanjut Pembayaran</strong>.</li>
+                <li>Pilih Metode Pembayaran (Tunai, QRIS, Debit, atau Kredit). Untuk tunai, Anda bisa menggunakan tombol cepat nominal uang (50k, 100k) atau ketik manual.</li>
+                <li>Klik <strong>Konfirmasi Pembayaran</strong>. Kembalian akan otomatis terhitung.</li>
+            </ol>
+            <p class="bg-orange-50 text-orange-800 p-3 rounded-lg text-sm border border-orange-200 mt-2">
+                <strong>Penting:</strong> Transaksi yang belum dibayar di keranjang tidak akan hilang meski Anda tidak sengaja me-refresh halaman (Fitur Anti-Data Loss).
+            </p>
+
+            <h3>C. Mengelola Menu & HPP (Harga Pokok Penjualan)</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Masuk ke menu <strong>Menu Kafe</strong> (Hanya Admin).</li>
+                <li>Klik <strong>Tambah Menu</strong>.</li>
+                <li>Isi Nama Menu, Kategori, <strong>Harga Modal (HPP)</strong>, dan Harga Jual. <em>Catatan: Mengisi HPP sangat penting agar sistem bisa menghitung Laba Bersih secara otomatis di Laporan Keuangan.</em></li>
+                <li>Upload gambar langsung dari perangkat atau gunakan URL gambar dari internet. Klik Simpan.</li>
+            </ul>
+
+            <h3>D. Laporan Keuangan & Export Excel (Khusus Admin)</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Buka menu <strong>Riwayat</strong>, lalu klik tombol biru <strong>Lihat Laporan Keuangan</strong> di pojok kanan atas.</li>
+                <li>Sistem akan menampilkan ringkasan cerdas: <strong>Total Omzet</strong>, <strong>Total Modal</strong>, <strong>Laba Bersih</strong>, dan grafik interaktif performa penjualan 7 Hari Terakhir.</li>
+                <li>Untuk pembukuan yang lebih detail, gunakan fitur <strong>Export Excel</strong>. Anda bisa langsung mengunduh data hari ini, minggu ini, bulan ini, atau memilih rentang tanggal spesifik (Custom). File Excel akan otomatis berisi rincian HPP dan Laba Bersih per transaksi.</li>
+            </ul>
+
+            <hr class="my-8 border-slate-200">
+
+            <h2>2. Panduan Pengaturan & Kustomisasi</h2>
+
+            <h3>A. Auto-Save Pengaturan</h3>
+            <p>Fitur terbaru di BejajaCafePOS: Anda tidak perlu lagi mencari tombol "Simpan" di menu Pengaturan. Setiap kali Anda mengubah warna tema, mengganti nama aplikasi, mengetik alamat struk, atau mengunggah logo, sistem akan <strong>menyimpannya secara otomatis</strong> dan memunculkan notifikasi hijau di pojok kanan atas.</p>
+
+            <h3>B. Mengatur Pembayaran QRIS</h3>
+            <p>Di Pengaturan, Anda dapat memunculkan QR Code toko Anda untuk mempermudah pelanggan. Sangat disarankan untuk menggunakan mode <strong>URL Link</strong> saat mengunggah gambar QRIS. Dengan menggunakan link, gambar tidak akan hilang walau Anda melakukan backup/restore atau reset aplikasi.</p>
+
+            <h3>C. Sinkronisasi Google Sheets</h3>
+            <p>Untuk keamanan ekstra, koneksikan aplikasi ke Google Sheets. Masukkan URL <em>Web App Google Script</em> di pengaturan. Setiap transaksi sukses akan langsung di-backup ke cloud. Jika kasir sedang offline (tidak ada internet), data akan disimpan sementara di perangkat dan Anda bisa menekan tombol <strong>Sinkron Sekarang</strong> saat internet kembali stabil.</p>
+
+            <hr class="my-8 border-slate-200">
+
+            <h2>3. Panduan Hosting & Instalasi PWA</h2>
+            <p>Aplikasi ini dibuat murni menggunakan HTML, CSS (Tailwind), dan Javascript (IndexedDB), sehingga tidak membutuhkan server backend/database yang mahal. Anda dapat menghostingnya secara <strong>GRATIS</strong>.</p>
+
+            <h3>Menggunakan GitHub Pages (Gratis & Disarankan)</h3>
+            <ol class="list-decimal pl-5 space-y-2">
+                <li>Buat akun di <a href="https://github.com" class="text-blue-600 underline" target="_blank">GitHub</a>.</li>
+                <li>Buat repository baru, misalnya dengan nama <code>BejajaCafePOS-app</code>.</li>
+                <li>Upload file <code>index.html</code>, <code>manifest.json</code>, <code>sw.js</code>, dan buat folder <code>assets/</code> lalu upload gambar logo Anda (harus bernama <code>icon-192x192.png</code> & <code>icon-512x512.png</code>).</li>
+                <li>Pergi ke tab <strong>Settings</strong> pada repository tersebut -> Pilih <strong>Pages</strong> (di sidebar kiri).</li>
+                <li>Pada bagian Source, pilih <strong>Deploy from a branch</strong>, pilih branch <code>main</code>, dan klik <strong>Save</strong>.</li>
+                <li>Tunggu beberapa menit, GitHub akan memberikan link website HTTPS. Buka link tersebut di Tablet/HP Kasir, lalu pilih opsi <strong>"Add to Home Screen" (Instal Aplikasi)</strong> agar BejajaCafePOS berjalan penuh tanpa border browser layaknya aplikasi Android/iOS asli.</li>
+            </ol>
+
+        </main>
+
+        <footer class="text-center mt-12 text-slate-500 text-sm">
+            &copy; 2026 BejajaCafePOS System. Hak Cipta Dilindungi.<br>
+            <span class="text-xs">Didesain eksklusif untuk kemudahan manajemen operasional dan pembukuan kafe Anda.</span>
+        </footer>
+    </div>
+
+</body>
+</html>
