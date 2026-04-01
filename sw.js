@@ -1,5 +1,5 @@
-// Mengubah versi cache ke v4 untuk memastikan browser mengunduh versi HTML terbaru
-const CACHE_NAME = 'BejajaCafePOS-cache-v4';
+// Mengubah versi cache ke v5 untuk memastikan pembaruan
+const CACHE_NAME = 'BejajaCafePOS-cache-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+  'https://cdn.jsdelivr.net/npm/chart.js', // DITAMBAHKAN: Agar grafik laporan keuangan bisa dibuka saat offline
   'https://unpkg.com/lucide@latest'
 ];
 
